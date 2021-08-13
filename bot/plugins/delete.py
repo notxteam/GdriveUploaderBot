@@ -23,9 +23,9 @@ def _delete(client, message):
     message.reply_text(Messages.PROVIDE_GDRIVE_URL.format(BotCommands.Delete[0]), quote=True)
 
 
-@Client.on_message(filters.private & filters.incoming & filters.command(BotCommands.EmptyTrash) & CustomFilters.auth_users)
-def _emptyTrash(client, message):
+@Client.on_message(filters.private & filters.incoming & filters.command(BotCommands.Clear) & CustomFilters.auth_users)
+def _clear(client, message):
   user_id = message.from_user.id
-  LOGGER.info(f'EmptyTrash: {user_id}')
-  msg = GoogleDrive(user_id).emptyTrash()
+  LOGGER.info(f'Clear: {user_id}')
+  msg = GoogleDrive(user_id).clear()
   message.reply_text(msg, quote=True)
